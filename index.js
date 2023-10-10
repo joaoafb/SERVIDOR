@@ -25,6 +25,10 @@ const options = {
     cert: fs.readFileSync('cert.pem'),
     key: fs.readFileSync('key.pem'),
 };
+if (options.includeResultMetadata === undefined) {
+    options.includeResultMetadata = false;
+}
+
 
 const server = https.createServer(options, app); // Create an HTTPS server
 const io = socketIO(server);
